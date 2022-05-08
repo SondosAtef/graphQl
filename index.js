@@ -35,12 +35,11 @@ const resolvers = {
     },
     Mutation:{
         addPost:(parent,{title})=>{
-            posts.push({title})
-            return posts
+            posts.push({id : posts.length + 1 , title})
+            return posts[posts.length - 1]
         }
     }
 }
-
 
 //server
 const server = new ApolloServer({
