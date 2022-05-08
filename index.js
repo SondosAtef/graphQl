@@ -21,6 +21,10 @@ type Post{
 type Query{
   posts:[Post]
 }
+
+type Mutation{
+    addPost(title:String):Post
+}
 `;
 
 
@@ -28,6 +32,12 @@ type Query{
 const resolvers = {
     Query:{
         posts:()=> posts
+    },
+    Mutation:{
+        addPost:(parent,{title})=>{
+            posts.push({title})
+            return posts
+        }
     }
 }
 
